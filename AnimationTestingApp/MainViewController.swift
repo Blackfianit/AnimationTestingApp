@@ -5,15 +5,43 @@
 //  Created by Дмитрий Ивашинин on 26.09.2021.
 //
 
-import UIKit
+import Spring
 
 class MainViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    @IBOutlet var springAnimationView: SpringView!
+    
+    @IBOutlet var presetLabel: UILabel!
+    @IBOutlet var curveLabel: UILabel!
+    @IBOutlet var forceLabel: UILabel!
+    @IBOutlet var durationLabel: UILabel!
+    @IBOutlet var delayLabel: UILabel!
+
+    @IBOutlet var springButton: SpringButton!
+    
+    private var animation = Animation.getAnimation()
+    
+    @IBAction func runAnimation(_ sender: SpringButton) {
+        
+        springAnimationView.animation = animation.preset
+        springAnimationView.curve = animation.curve
+        springAnimationView.force = rounded(number: CGFloat(Float.random(in: 0.8...1.5)))
+        springAnimationView.duration = rounded(number: CGFloat(Float.random(in: 0.5...2.5)))
+        springAnimationView.delay = rounded(number: CGFloat(Float.random(in: 0.5...1)))
+        springAnimationView.animate()
+        
+        presetLabel.text = "preset: \(animation.preset)"
+        curveLabel.text = "curve: \(animation.curve)"
+        forceLabel.text = "force: \(springAnimationView.force)"
+        durationLabel.text = "duration: \(springAnimationView.duration)"
+        delayLabel.text = "delay: \(springAnimationView.delay)"
+        
+        animation = Animation.getAnimation()
+        springButton.setTitle("Run \(animation.preset)", for: .normal)
     }
-
-
+    
+    private func rounded(number: CGFloat) -> CGFloat {
+        round(number * 100) / 100
+    }
 }
 

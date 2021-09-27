@@ -16,9 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYN-i7-KdT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYN-i7-KdT" customClass="SpringButton" customModule="Spring">
                                 <rect key="frame" x="51.5" y="545" width="272" height="42"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Run animation">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -28,8 +28,11 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="runAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ABQ-sH-ee6"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8s2-V9-vly">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8s2-V9-vly" customClass="SpringView" customModule="Spring">
                                 <rect key="frame" x="51" y="101" width="272" height="163"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yX5-VD-Nse">
@@ -103,7 +106,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8s2-V9-vly" secondAttribute="height" multiplier="272:163" id="Jnr-pq-mVk"/>
                                     <constraint firstItem="yX5-VD-Nse" firstAttribute="leading" secondItem="8s2-V9-vly" secondAttribute="leading" constant="21" id="bVw-Jn-JUr"/>
@@ -113,6 +116,8 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -132,6 +137,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8s2-V9-vly" secondAttribute="trailing" constant="52" id="wAd-Lp-teP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="curveLabel" destination="LfT-a0-18G" id="zMY-6T-PFX"/>
+                        <outlet property="delayLabel" destination="5f1-Ve-3xa" id="ISm-dY-QIw"/>
+                        <outlet property="durationLabel" destination="pka-n2-wZs" id="zdH-Rh-3XO"/>
+                        <outlet property="forceLabel" destination="pfL-r5-LrN" id="03y-aT-j1p"/>
+                        <outlet property="presetLabel" destination="dHQ-2K-NFg" id="ZRv-Uc-gNp"/>
+                        <outlet property="springAnimationView" destination="8s2-V9-vly" id="glq-7T-6dH"/>
+                        <outlet property="springButton" destination="zYN-i7-KdT" id="kLU-8t-pOB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,6 +155,12 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

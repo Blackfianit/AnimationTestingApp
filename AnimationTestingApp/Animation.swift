@@ -11,9 +11,6 @@ struct Animation {
     
     let preset: String
     let curve: String
-    let force: Float
-    let duration: Float
-    let delay: Float
     
 }
 
@@ -21,11 +18,10 @@ extension Animation {
     
     static func getAnimation() -> Animation {
         
-        Animation(preset: DataManager.shared.presets.randomElement() ?? "",
-                  curve: DataManager.shared.curves.randomElement() ?? "",
-                  force: DataManager.shared.force,
-                  duration: DataManager.shared.duration,
-                  delay: DataManager.shared.delay)
+        Animation(
+            preset: DataManager.shared.presets.randomElement() ?? "",
+            curve: DataManager.shared.curves.randomElement() ?? ""
+        )
        
     }
 }
