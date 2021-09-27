@@ -25,9 +25,9 @@ class MainViewController: UIViewController {
         
         springAnimationView.animation = animation.preset
         springAnimationView.curve = animation.curve
-        springAnimationView.force = rounded(number: CGFloat(Float.random(in: 0.8...1.5)))
-        springAnimationView.duration = rounded(number: CGFloat(Float.random(in: 0.5...2.5)))
-        springAnimationView.delay = rounded(number: CGFloat(Float.random(in: 0.5...1)))
+        springAnimationView.force = rounded(number: CGFloat(animation.force))
+        springAnimationView.duration = rounded(number: CGFloat(animation.duration))
+        springAnimationView.delay = rounded(number: CGFloat(animation.delay))
         springAnimationView.animate()
         
         presetLabel.text = "preset: \(animation.preset)"
